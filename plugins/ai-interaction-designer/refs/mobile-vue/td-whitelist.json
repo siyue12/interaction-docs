@@ -1,0 +1,640 @@
+{
+  "schema": "aiux/whitelist@1",
+  "framework": "mobile-vue",
+  "tdesignVersion": "1.17.1",
+  "mcp": {
+    "package": "tdesign-mcp-server",
+    "version": "0.2.4",
+    "tool": "get-component-list",
+    "framework": "mobile-vue"
+  },
+  "generatedAt": "2026-11-04",
+  "note": "移动端。顶层名字来自 MCP get-component-list(framework=mobile-vue)；标签名来自 tdesign-mobile-vue 源码里的真实注册名。public=false 为内部标签。",
+  "categories": {
+    "message": {
+      "action-sheet": "从底部弹出的模态框，提供和当前场景相关的操作动作，也支持提供信息输入和描述。",
+      "dialog": "用于显示重要提示或请求用户进行重要操作，一种打断当前操作的模态视图。",
+      "dropdown-menu": "菜单呈现数个并列的选项类目，用于整个页面的内容筛选，由菜单面板和菜单选项组成。",
+      "guide": "逐步骤进行指引或解释说明的组件，常用于用户不熟悉的或需进行特别强调的页面。",
+      "loading": "用于表示页面或操作的加载状态，给予用户反馈的同时减缓等待的焦虑感，由一个或一组反馈动效组成。",
+      "message": "用于轻量级反馈或提示，不会打断用户操作。",
+      "notice-bar": "在导航栏下方，用于给用户显示提示消息。",
+      "overlay": "通过遮罩层，可以强调部分内容。",
+      "popover": "用于文字提示的气泡框。",
+      "popup": "由其他控件触发，屏幕滑出或弹出一块自定义内容区域。",
+      "pull-down-refresh": "用于快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新。",
+      "swipe-cell": "用于承载列表中的更多操作，通过左右滑动来展示，按钮的宽度固定高度根据列表高度而变化。",
+      "toast": "用于轻量级反馈或提示，不会打断用户操作。"
+    },
+    "data": {
+      "avatar": "用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作。",
+      "badge": "用于告知用户，该区域的状态变化或者待处理任务的数量。",
+      "cell": "用于各个类别行的信息展示。",
+      "collapse": "可以折叠/展开的内容区域。",
+      "count-down": "用于实时展示倒计时数值。",
+      "empty": "用于空状态时的占位提示。",
+      "footer": "用于展示网站的版权声明、联系信息、重要页面链接和其他相关内容等信息。",
+      "grid": "用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。",
+      "image-viewer": "用于图片内容的缩略展示与查看。",
+      "image": "用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。",
+      "progress": "用于展示任务当前的进度。",
+      "qrcode": "能够将文本转换生成二维码的组件，支持自定义配色和 Logo 配置。",
+      "result": "用于反馈不同结果的展示。",
+      "skeleton": "用于等待加载内容所展示的占位图形组合，有动态效果加载效果，减少用户等待焦虑。",
+      "sticky": "用于常驻页面顶部的信息、操作展示。",
+      "swiper": "用于循环轮播一组图片或内容，也可以滑动进行切换，轮播动效时间可以设置。",
+      "tag": "用于表明主体的类目，属性或状态。",
+      "watermark": "给页面的某个区域加上水印。",
+      "segmented": "用于展示多个选项并允许用户选择其中单个选项。"
+    },
+    "navigation": {
+      "back-top": "用于当页面过长往下滑动时，帮助用户快速回到页面顶部。",
+      "drawer": "用作一组平行关系页面/内容的切换器，相较于 Tab，同屏可展示更多的选项数量。",
+      "indexes": "用于页面中信息快速检索，可以根据目录中的页码快速找到所需的内容。",
+      "navbar": "用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。",
+      "side-bar": "用于信息分类后的展示切换或锚点，位于页面左侧。",
+      "steps": "用于任务步骤展示或任务进度展示。",
+      "tab-bar": "用于在不同功能模块之间进行快速切换，位于页面底部。",
+      "tabs": "用于内容分类后的展示切换。"
+    },
+    "base": {
+      "button": "用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。",
+      "divider": "用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。",
+      "fab": "当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布。",
+      "icon": "Icon 作为 UI 构成中重要的元素，一定程度上影响 UI 界面整体呈现出的风格。",
+      "layout": "以规则的网格阵列来指导和规范页面中的版面布局以及信息分布，提高界面内布局的一致性，节约成本。",
+      "link": "文字超链接用于跳转一个新页面，如当前项目跳转，友情链接等。",
+      "list": "瀑布流滚动加载，用于展示长列表，当列表即将滚动到底部时，会触发事件并加载更多列表项。",
+      "table": "表格常用于展示同类结构下的多种数据，易于组织、对比和分析等，并可对数据进行搜索、筛选、排序等操作。一般包括表头、数据行和表尾三部分。",
+      "typography": "排版用于文本基础编排和样式，使用排版组件，可以快速完成页面中的文本内容制作，同时配合其他组件完成深色与浅色模式切换等风格统一的需求"
+    },
+    "form": {
+      "calendar": "按照日历形式展示数据或日期的容器。",
+      "cascader": "用于多层级数据的逐级选择。",
+      "checkbox": "用于预设的一组选项中执行多项选择，并呈现选择结果。",
+      "color-picker": "用于颜色选择，支持多种格式。",
+      "date-time-picker": "用于选择一个时间点或者一个时间段。",
+      "form": "用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。",
+      "input": "用于单行文本信息输入。",
+      "picker": "用于一组预设数据中的选择。",
+      "radio": "用于在预设的一组选项中执行单项选择，并呈现选择结果。",
+      "rate": "用于对某行为/事物进行打分。",
+      "search": "用于用户输入搜索信息，并进行页面内容搜索。",
+      "slider": "用于选择横轴上的数值、区间、档位。",
+      "stepper": "用于数量的增减。",
+      "switch": "用于控制某个功能的开启和关闭。",
+      "textarea": "用于多行文本信息输入。",
+      "tree-select": "用于多层级数据的逐级选择。",
+      "upload": "用于相册读取或拉起拍照的图片上传功能。"
+    },
+    "explain": {
+      "config-provider": "全局特性配置包含各个组件的文本语言配置及其他通用配置，可以减少重复的通用配置。"
+    }
+  },
+  "components": [
+    "ActionSheet",
+    "Avatar",
+    "BackTop",
+    "Badge",
+    "Button",
+    "Calendar",
+    "Cascader",
+    "Cell",
+    "Checkbox",
+    "Collapse",
+    "ColorPicker",
+    "ConfigProvider",
+    "CountDown",
+    "DateTimePicker",
+    "Dialog",
+    "Divider",
+    "Drawer",
+    "DropdownMenu",
+    "Empty",
+    "Fab",
+    "Footer",
+    "Form",
+    "Grid",
+    "Guide",
+    "Icon",
+    "Image",
+    "ImageViewer",
+    "Indexes",
+    "Input",
+    "Layout",
+    "Link",
+    "List",
+    "Loading",
+    "Message",
+    "Navbar",
+    "NoticeBar",
+    "Overlay",
+    "Picker",
+    "Popover",
+    "Popup",
+    "Progress",
+    "PullDownRefresh",
+    "QRCode",
+    "Radio",
+    "Rate",
+    "Result",
+    "Search",
+    "Segmented",
+    "SideBar",
+    "Skeleton",
+    "Slider",
+    "Stepper",
+    "Steps",
+    "Sticky",
+    "SwipeCell",
+    "Swiper",
+    "Switch",
+    "TabBar",
+    "Table",
+    "Tabs",
+    "Tag",
+    "Textarea",
+    "Toast",
+    "TreeSelect",
+    "Typography",
+    "Upload",
+    "Watermark"
+  ],
+  "tags": {
+    "t-action-sheet": {
+      "component": "ActionSheet",
+      "family": "ActionSheet",
+      "public": true
+    },
+    "t-avatar": {
+      "component": "Avatar",
+      "family": "Avatar",
+      "public": true
+    },
+    "t-avatar-group": {
+      "component": "AvatarGroup",
+      "family": "Avatar",
+      "public": true
+    },
+    "t-back-top": {
+      "component": "BackTop",
+      "family": "BackTop",
+      "public": true
+    },
+    "t-badge": {
+      "component": "Badge",
+      "family": "Badge",
+      "public": true
+    },
+    "t-base-table": {
+      "component": "BaseTable",
+      "family": "Table",
+      "public": false
+    },
+    "t-button": {
+      "component": "Button",
+      "family": "Button",
+      "public": true
+    },
+    "t-calendar": {
+      "component": "Calendar",
+      "family": "Calendar",
+      "public": true
+    },
+    "t-calendar-template": {
+      "component": "CalendarTemplate",
+      "family": "Calendar",
+      "public": false
+    },
+    "t-cascader": {
+      "component": "Cascader",
+      "family": "Cascader",
+      "public": true
+    },
+    "t-cell": {
+      "component": "Cell",
+      "family": "Cell",
+      "public": true
+    },
+    "t-cell-group": {
+      "component": "CellGroup",
+      "family": "Cell",
+      "public": true
+    },
+    "t-check-tag": {
+      "component": "CheckTag",
+      "family": "CheckTag",
+      "public": true
+    },
+    "t-checkbox": {
+      "component": "Checkbox",
+      "family": "Checkbox",
+      "public": true
+    },
+    "t-checkbox-group": {
+      "component": "CheckboxGroup",
+      "family": "Checkbox",
+      "public": true
+    },
+    "t-col": {
+      "component": "Col",
+      "family": "Col",
+      "public": true
+    },
+    "t-collapse": {
+      "component": "Collapse",
+      "family": "Collapse",
+      "public": true
+    },
+    "t-collapse-panel": {
+      "component": "CollapsePanel",
+      "family": "Collapse",
+      "public": true
+    },
+    "t-color-picker": {
+      "component": "ColorPicker",
+      "family": "ColorPicker",
+      "public": true
+    },
+    "t-comment": {
+      "component": "Comment",
+      "family": "Comment",
+      "public": true
+    },
+    "t-config-provider": {
+      "component": "ConfigProvider",
+      "family": "ConfigProvider",
+      "public": true
+    },
+    "t-count-down": {
+      "component": "CountDown",
+      "family": "CountDown",
+      "public": true
+    },
+    "t-date-time-picker": {
+      "component": "DateTimePicker",
+      "family": "DateTimePicker",
+      "public": true
+    },
+    "t-dialog": {
+      "component": "Dialog",
+      "family": "Dialog",
+      "public": true
+    },
+    "t-divider": {
+      "component": "Divider",
+      "family": "Divider",
+      "public": true
+    },
+    "t-drawer": {
+      "component": "Drawer",
+      "family": "Drawer",
+      "public": true
+    },
+    "t-dropdown-item": {
+      "component": "DropdownItem",
+      "family": "DropdownMenu",
+      "public": true
+    },
+    "t-dropdown-menu": {
+      "component": "DropdownMenu",
+      "family": "DropdownMenu",
+      "public": true
+    },
+    "t-ellipsis": {
+      "component": "Ellipsis",
+      "family": "Ellipsis",
+      "public": false
+    },
+    "t-empty": {
+      "component": "Empty",
+      "family": "Empty",
+      "public": true
+    },
+    "t-fab": {
+      "component": "Fab",
+      "family": "Fab",
+      "public": true
+    },
+    "t-footer": {
+      "component": "Footer",
+      "family": "Footer",
+      "public": true
+    },
+    "t-form": {
+      "component": "Form",
+      "family": "Form",
+      "public": true
+    },
+    "t-form-item": {
+      "component": "FormItem",
+      "family": "Form",
+      "public": true
+    },
+    "t-gradient": {
+      "component": "Gradient",
+      "family": "Gradient",
+      "public": false
+    },
+    "t-grid": {
+      "component": "Grid",
+      "family": "Grid",
+      "public": true
+    },
+    "t-grid-item": {
+      "component": "GridItem",
+      "family": "Grid",
+      "public": true
+    },
+    "t-guide": {
+      "component": "Guide",
+      "family": "Guide",
+      "public": true
+    },
+    "t-image": {
+      "component": "Image",
+      "family": "Image",
+      "public": true
+    },
+    "t-image-viewer": {
+      "component": "ImageViewer",
+      "family": "ImageViewer",
+      "public": true
+    },
+    "t-indexes": {
+      "component": "Indexes",
+      "family": "Indexes",
+      "public": true
+    },
+    "t-indexes-anchor": {
+      "component": "IndexesAnchor",
+      "family": "Indexes",
+      "public": true
+    },
+    "t-input": {
+      "component": "Input",
+      "family": "Input",
+      "public": true
+    },
+    "t-link": {
+      "component": "Link",
+      "family": "Link",
+      "public": true
+    },
+    "t-list": {
+      "component": "List",
+      "family": "List",
+      "public": true
+    },
+    "t-loading": {
+      "component": "Loading",
+      "family": "Loading",
+      "public": true
+    },
+    "t-message": {
+      "component": "Message",
+      "family": "Message",
+      "public": true
+    },
+    "t-navbar": {
+      "component": "Navbar",
+      "family": "Navbar",
+      "public": true
+    },
+    "t-notice-bar": {
+      "component": "NoticeBar",
+      "family": "NoticeBar",
+      "public": true
+    },
+    "t-overlay": {
+      "component": "Overlay",
+      "family": "Overlay",
+      "public": true
+    },
+    "t-picker": {
+      "component": "Picker",
+      "family": "Picker",
+      "public": true
+    },
+    "t-picker-item": {
+      "component": "PickerItem",
+      "family": "Picker",
+      "public": true
+    },
+    "t-popover": {
+      "component": "Popover",
+      "family": "Popover",
+      "public": true
+    },
+    "t-popup": {
+      "component": "Popup",
+      "family": "Popup",
+      "public": true
+    },
+    "t-progress": {
+      "component": "Progress",
+      "family": "Progress",
+      "public": true
+    },
+    "t-pull-down-refresh": {
+      "component": "PullDownRefresh",
+      "family": "PullDownRefresh",
+      "public": true
+    },
+    "t-qrcode": {
+      "component": "QRCode",
+      "family": "QRCode",
+      "public": true
+    },
+    "t-radio": {
+      "component": "Radio",
+      "family": "Radio",
+      "public": true
+    },
+    "t-radio-group": {
+      "component": "RadioGroup",
+      "family": "Radio",
+      "public": true
+    },
+    "t-rate": {
+      "component": "Rate",
+      "family": "Rate",
+      "public": true
+    },
+    "t-result": {
+      "component": "Result",
+      "family": "Result",
+      "public": true
+    },
+    "t-row": {
+      "component": "Row",
+      "family": "Row",
+      "public": true
+    },
+    "t-search": {
+      "component": "Search",
+      "family": "Search",
+      "public": true
+    },
+    "t-segmented": {
+      "component": "Segmented",
+      "family": "Segmented",
+      "public": true
+    },
+    "t-side-bar": {
+      "component": "SideBar",
+      "family": "SideBar",
+      "public": true
+    },
+    "t-side-bar-item": {
+      "component": "SideBarItem",
+      "family": "SideBar",
+      "public": true
+    },
+    "t-skeleton": {
+      "component": "Skeleton",
+      "family": "Skeleton",
+      "public": true
+    },
+    "t-slider": {
+      "component": "Slider",
+      "family": "Slider",
+      "public": true
+    },
+    "t-spinner": {
+      "component": "Spinner",
+      "family": "Spinner",
+      "public": true
+    },
+    "t-step-item": {
+      "component": "StepItem",
+      "family": "Steps",
+      "public": true
+    },
+    "t-stepper": {
+      "component": "Stepper",
+      "family": "Stepper",
+      "public": true
+    },
+    "t-steps": {
+      "component": "Steps",
+      "family": "Steps",
+      "public": true
+    },
+    "t-sticky": {
+      "component": "Sticky",
+      "family": "Sticky",
+      "public": true
+    },
+    "t-swipe-cell": {
+      "component": "SwipeCell",
+      "family": "SwipeCell",
+      "public": true
+    },
+    "t-swiper": {
+      "component": "Swiper",
+      "family": "Swiper",
+      "public": true
+    },
+    "t-swiper-item": {
+      "component": "SwiperItem",
+      "family": "Swiper",
+      "public": true
+    },
+    "t-switch": {
+      "component": "Switch",
+      "family": "Switch",
+      "public": true
+    },
+    "t-tab-bar": {
+      "component": "TabBar",
+      "family": "TabBar",
+      "public": true
+    },
+    "t-tab-bar-item": {
+      "component": "TabBar",
+      "family": "TabBar",
+      "public": true
+    },
+    "t-tab-nav": {
+      "component": "TabNav",
+      "family": "Tabs",
+      "public": false
+    },
+    "t-tab-panel": {
+      "component": "TabPanel",
+      "family": "Tabs",
+      "public": true
+    },
+    "t-tabs": {
+      "component": "Tabs",
+      "family": "Tabs",
+      "public": true
+    },
+    "t-tag": {
+      "component": "Tag",
+      "family": "Tag",
+      "public": true
+    },
+    "t-textarea": {
+      "component": "Textarea",
+      "family": "Textarea",
+      "public": true
+    },
+    "t-toast": {
+      "component": "Toast",
+      "family": "Toast",
+      "public": true
+    },
+    "t-tree-select": {
+      "component": "TreeSelect",
+      "family": "TreeSelect",
+      "public": true
+    },
+    "t-typography": {
+      "component": "Typography",
+      "family": "Typography",
+      "public": true
+    },
+    "t-typography-paragraph": {
+      "component": "TypographyParagraph",
+      "family": "Typography",
+      "public": true
+    },
+    "t-typography-text": {
+      "component": "TypographyText",
+      "family": "Typography",
+      "public": true
+    },
+    "t-typography-title": {
+      "component": "TypographyTitle",
+      "family": "Typography",
+      "public": true
+    },
+    "t-upload": {
+      "component": "Upload",
+      "family": "Upload",
+      "public": true
+    },
+    "t-watermark": {
+      "component": "Watermark",
+      "family": "Watermark",
+      "public": true
+    },
+    "t-icon": {
+      "component": "Icon",
+      "family": "Icon",
+      "public": true
+    },
+    "t-layout": {
+      "component": "Layout",
+      "family": "Layout",
+      "public": true
+    },
+    "t-table": {
+      "component": "Table",
+      "family": "Table",
+      "public": true
+    }
+  }
+}

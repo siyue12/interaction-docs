@@ -1,0 +1,327 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aiux/spec@1",
+  "title": "AIUX 单页交互说明",
+  "description": "页面内嵌 #aiux-spec 的唯一事实源。所有章节必须存在；不涉及的项写「不涉及：原因」，未提供的项写「未提供」，需要别人决策的项进 openQuestions。禁止留空。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "page",
+    "mcp",
+    "summary",
+    "s1_access",
+    "s2_ia",
+    "s3_page",
+    "s4_global",
+    "s5_edge",
+    "s6_tracking",
+    "s7_i18n",
+    "openQuestions"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "aiux/spec@1"
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "file"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "description": "页面中文名" },
+        "file": { "type": "string", "minLength": 1, "description": "相对任务根目录的页面路径，例如 pages/order-list.html" }
+      }
+    },
+    "mcp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["package", "version", "framework", "checkedComponents"],
+      "properties": {
+        "package": { "type": "string", "const": "tdesign-mcp-server" },
+        "version": { "type": "string", "const": "0.2.4" },
+        "framework": {
+          "type": "string",
+          "enum": ["vue-next", "mobile-vue"],
+          "description": "本页使用的 TDesign 框架。桌面端写 vue-next，移动端写 mobile-vue；一个任务只能选一个端。"
+        },
+        "checkedComponents": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "本页写之前实际查过 TDesign MCP 组件文档的组件名（PascalCase），例如 Table / Button / Drawer。子组件可写父组件名。"
+        }
+      }
+    },
+    "summary": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "3–5 句页面摘要，抽屉顶部展示。"
+    },
+    "s1_access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["roles", "matrix", "roleDiffs"],
+      "properties": {
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "desc"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "desc": { "type": "string", "minLength": 1 }
+            }
+          },
+          "description": "只写用户提到或已存在的角色；未提及写空数组并在 roleDiffs 里写「未提供」。"
+        },
+        "matrix": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "action", "allowed"],
+            "properties": {
+              "role": { "type": "string" },
+              "action": { "type": "string" },
+              "allowed": { "type": "string", "description": "允许 / 禁止 / 只读 / 未提供" },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "roleDiffs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "本页的角色差异；没有就写「未提供」。"
+        }
+      }
+    },
+    "s2_ia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["position", "entries", "exits"],
+      "properties": {
+        "position": { "type": "string", "description": "本页在功能地图中的位置；不知道写「未提供」。" },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["from", "how"],
+            "properties": {
+              "from": { "type": "string" },
+              "how": { "type": "string" }
+            }
+          }
+        },
+        "exits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["to", "how"],
+            "properties": {
+              "to": { "type": "string" },
+              "how": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "s3_page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["goal", "elements", "flows", "states", "fields", "actions"],
+      "properties": {
+        "goal": { "type": "string", "minLength": 1, "description": "这一页解决什么，从哪进来，一句话。" },
+        "elements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "component"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "component": { "type": "string", "minLength": 1, "description": "TDesign 组件名，必须来自 MCP 白名单" },
+              "anchor": { "type": "string", "description": "可选，对应元素上的 data-aiux" }
+            }
+          }
+        },
+        "flows": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["main", "exception"],
+          "properties": {
+            "main": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/flowItem" }
+            },
+            "exception": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/flowItem" }
+            }
+          }
+        },
+        "states": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["default", "loading", "empty", "error", "noPermission", "overLimit"],
+          "properties": {
+            "default": { "type": "string", "minLength": 1 },
+            "loading": { "type": "string", "minLength": 1 },
+            "empty": { "type": "string", "minLength": 1 },
+            "error": { "type": "string", "minLength": 1 },
+            "noPermission": { "type": "string", "minLength": 1 },
+            "overLimit": { "type": "string", "minLength": 1 }
+          },
+          "description": "六态齐全。不涉及的写「不涉及：原因」，不能留白。"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "rule"],
+            "properties": {
+              "name": { "type": "string" },
+              "rule": { "type": "string", "description": "必填/格式/长度等；只写对话里说过的，没说不许发明" },
+              "message": { "type": "string", "description": "错误提示文案，只写用户给过的" },
+              "status": { "type": "string", "description": "已确认 / 转产品确认 / 转前端确认" }
+            }
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "feedback"],
+            "properties": {
+              "name": { "type": "string" },
+              "feedback": { "type": "string", "description": "hover / 点击 / 禁用 / 二次确认 / Toast" },
+              "disabledWhen": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "s4_global": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["loading", "motion", "shortcuts", "back", "cache", "tokenOverrides"],
+      "properties": {
+        "loading": { "type": "string" },
+        "motion": { "type": "string" },
+        "shortcuts": { "type": "string" },
+        "back": { "type": "string" },
+        "cache": { "type": "string" },
+        "tokenOverrides": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["token", "value", "reason"],
+            "properties": {
+              "token": { "type": "string", "pattern": "^--td-" },
+              "value": { "type": "string" },
+              "reason": { "type": "string" }
+            }
+          },
+          "description": "本页根容器上覆写的 TDesign token，必须逐条登记。"
+        }
+      }
+    },
+    "s5_edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network", "concurrency", "empty", "timeout", "duplicate"],
+      "properties": {
+        "network": { "type": "string" },
+        "concurrency": { "type": "string" },
+        "empty": { "type": "string" },
+        "timeout": { "type": "string" },
+        "duplicate": { "type": "string" }
+      },
+      "description": "有结论才写；没有结论写进 openQuestions。"
+    },
+    "s6_tracking": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["events"],
+      "properties": {
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "trigger"],
+            "properties": {
+              "name": { "type": "string" },
+              "trigger": { "type": "string" },
+              "fields": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "description": "只记用户给过的事件名；方案由产品与数据侧定。"
+        }
+      }
+    },
+    "s7_i18n": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["languages", "responsive", "a11y"],
+      "properties": {
+        "languages": { "type": "string" },
+        "responsive": { "type": "string" },
+        "a11y": { "type": "string" }
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gap", "why", "approver"],
+        "properties": {
+          "gap": { "type": "string" },
+          "why": { "type": "string", "description": "为何现有 TDesign 组件 + 组合不能满足" },
+          "approver": { "type": "string" }
+        }
+      },
+      "description": "TDesign 缺口登记。已知缺口：无独立 Result 结果页，用 Empty + Typography + Button 组合。"
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["item", "reason", "owner"],
+        "properties": {
+          "item": { "type": "string", "minLength": 1 },
+          "reason": {
+            "type": "string",
+            "enum": ["conversation-missing", "business-rule", "api-dependent", "visual-decision", "other"]
+          },
+          "owner": { "type": "string", "description": "产品 / 前端 / 设计 / 数据 / 后端" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "flowItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "anchor"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^I-[0-9]{2,}$", "description": "交互条目编号，例如 I-01" },
+        "text": { "type": "string", "minLength": 1 },
+        "anchor": { "type": "string", "minLength": 1, "description": "对应元素上的 data-aiux 值，不带 # 或选择器" },
+        "chapter": {
+          "type": "string",
+          "description": "可选，归入抽屉里的分组，例如 3.3 主流程"
+        }
+      }
+    }
+  }
+}

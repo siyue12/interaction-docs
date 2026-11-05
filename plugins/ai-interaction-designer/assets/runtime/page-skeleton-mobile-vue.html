@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>__PAGE_NAME__</title>
+  <link rel="stylesheet" href="../vendor/tdesign.min.css">
+  <link rel="stylesheet" href="../vendor/aiux/aiux-panel.css">
+  <style>
+    body {
+      margin: 0;
+      background: var(--td-bg-color-page);
+      color: var(--td-text-color-primary);
+      font-family: var(--td-font-family);
+    }
+
+    .aiux-mobile-frame {
+      width: 375px;
+      max-width: 100%;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--td-bg-color-container);
+      box-shadow: var(--td-shadow-2);
+    }
+
+    .aiux-mobile-body {
+      padding: 16px 16px 32px;
+    }
+
+    .aiux-mobile-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--td-text-color-placeholder);
+      font-size: var(--td-font-size-body-small);
+      line-height: var(--td-line-height-body-small);
+    }
+
+    .aiux-mobile-title {
+      margin: 8px 0 16px;
+      color: var(--td-text-color-primary);
+      font-size: var(--td-font-size-title-large);
+      line-height: var(--td-line-height-title-large);
+      font-weight: 600;
+    }
+
+    .aiux-mobile-list {
+      overflow: hidden;
+      border: 1px solid var(--td-component-stroke);
+      border-radius: var(--td-radius-large);
+      background: var(--td-bg-color-container);
+    }
+
+    .aiux-mobile-empty {
+      margin-top: 16px;
+      padding: 24px 16px;
+      border: 1px solid var(--td-component-stroke);
+      border-radius: var(--td-radius-large);
+      background: var(--td-bg-color-container);
+    }
+
+    .aiux-mobile-actions {
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    移动端页面说明：
+    1. 这是 tdesign-mobile-vue 高保真原型，页面放在 375px 手机画框里。
+    2. 页面内容写在 #app 里，Vue 会把它当作 in-DOM 模板编译。
+    3. 自定义组件必须写闭合标签，例如 <t-icon ...></t-icon>。
+    4. 颜色、字号、圆角、阴影、边框只能用 var(--td-*)，间距和尺寸可以用 px。
+    5. 移动端交互不要依赖 hover；点击目标建议 ≥ 44px。
+  -->
+  <div id="app">
+    <div class="aiux-mobile-frame" data-aiux="page-root">
+      <t-navbar title="__PAGE_NAME__" :fixed="false"></t-navbar>
+
+      <main class="aiux-mobile-body">
+        <div class="aiux-mobile-kicker" data-aiux="page-icon">
+          <t-icon name="check-circle" size="20px"></t-icon>
+          <span>移动端高保真原型</span>
+        </div>
+        <h1 class="aiux-mobile-title">__PAGE_NAME__</h1>
+
+        <div class="aiux-mobile-list" data-aiux="list-area">
+          <t-cell-group>
+            <t-cell title="示例信息" description="页面内容待生成，先写交互说明再替换。"></t-cell>
+            <t-cell title="示例入口" description="这里展示真实业务内容。" arrow></t-cell>
+          </t-cell-group>
+        </div>
+
+        <div class="aiux-mobile-empty" data-aiux="page-empty">
+          <t-empty description="页面内容待生成"></t-empty>
+        </div>
+
+        <div class="aiux-mobile-actions" data-aiux="page-primary-action">
+          <t-button theme="primary" block>主操作</t-button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="application/json" id="aiux-spec">__PAGE_SPEC__</script>
+
+  <script src="../vendor/vue.global.prod.js"></script>
+  <script src="../vendor/tdesign.min.js"></script>
+  <script src="../vendor/tdesign-sprite.js"></script>
+  <script src="../vendor/aiux/aiux-panel.js"></script>
+  <script>
+    (function () {
+      // 图标 sprite 已经本地引入，关闭 TDesign 的 CDN 默认图标加载，保证断网可用。
+      if (TDesign.Icon && TDesign.Icon.props && TDesign.Icon.props.loadDefaultIcons) {
+        TDesign.Icon.props.loadDefaultIcons.default = false;
+      }
+      var app = Vue.createApp({});
+      app.use(TDesign);
+      app.mount('#app');
+    })();
+  </script>
+</body>
+</html>

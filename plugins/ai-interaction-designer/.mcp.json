@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "tdesign-mcp-server": {
+      "command": "/bin/sh",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp/launch-mcp.sh"],
+      "timeoutMs": 120000
+    }
+  }
+}
