@@ -801,6 +801,14 @@ function buildSelfCheck(pages, refs, root, profile) {
   }
   lines.push('> 〔联调项〕表示需要真实数据或接口才能验证，不要当设计缺陷打回。');
   lines.push('');
+  lines.push('## H 交付预览');
+  lines.push('');
+  lines.push('- [ ] 已运行 aiux-serve，HTTP 返回 200 / 304');
+  lines.push('- [ ] 最终回复同时给出 Local 与 Network 可点击链接，Network 是私有 IPv4');
+  lines.push('- [ ] 端口不是 5173 时写了实际端口');
+  lines.push('- [ ] 启动失败时贴了真实日志，没有编造地址');
+  lines.push('- [ ] 评审结束已停止服务，或写明重启命令');
+  lines.push('');
   lines.push(`生成时间：${new Date().toLocaleString('zh-CN')}`);
   lines.push('');
   const out = path.join(root, '自检清单.md');

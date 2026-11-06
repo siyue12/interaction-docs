@@ -1,10 +1,10 @@
 {
   "name": "ai-interaction-designer",
-  "version": "1.1.0",
-  "description": "AI 交互设计师工作流（桌面端/移动端）：逐页生成 TDesign 高保真原型与七章交互说明，内置组件白名单、token 校验、锚点定位和前端自检清单。",
+  "version": "1.2.0",
+  "description": "AI 交互设计师工作流（桌面端/移动端）：逐页生成 TDesign 高保真原型与七章交互说明，内置组件白名单、token 校验、锚点定位、前端自检清单，以及 Local/Network 交付预览。",
   "description_i18n": {
-    "en": "AI interaction designer workflow (desktop/mobile): per-page TDesign high-fidelity prototypes and seven-chapter interaction specs, with component whitelist, token validation, anchor navigation and a front-end self-check list.",
-    "zh-CN": "AI 交互设计师工作流（桌面端/移动端）：逐页生成 TDesign 高保真原型与七章交互说明，内置组件白名单、token 校验、锚点定位和前端自检清单。"
+    "en": "AI interaction designer workflow (desktop/mobile): per-page TDesign high-fidelity prototypes and seven-chapter interaction specs, with component whitelist, token validation, anchor navigation, a front-end self-check list, and Local/Network delivery preview.",
+    "zh-CN": "AI 交互设计师工作流（桌面端/移动端）：逐页生成 TDesign 高保真原型与七章交互说明，内置组件白名单、token 校验、锚点定位、前端自检清单，以及 Local/Network 交付预览。"
   },
   "author": {
     "name": "tim"

@@ -209,14 +209,14 @@ node "${CLAUDE_PLUGIN_ROOT}/scripts/aiux-check.mjs" .aiux/pages/<page>.html
 5. 移动端额外在 375 / 390 / 414 宽度各看一次；检查顶部/底部安全区、点击目标 ≥ 44px、没有依赖 hover 的操作。
 6. 0 违规再进入下一页。
 
-如果浏览器工具不支持 `file://`，可以起一个本地静态服务验证渲染与交互：
+如果浏览器工具不支持 `file://`，用插件的交付预览脚本验证渲染与交互：
 
 ```bash
-cd .aiux && python3 -m http.server 8123
-# 打开 http://127.0.0.1:8123/pages/<page>.html
+node "${CLAUDE_PLUGIN_ROOT}/scripts/aiux-serve.mjs" .aiux
+# 打开输出的 Local / Network 地址，或 http://localhost:5173/pages/<page>.html
 ```
 
-本地服务只用于自动化验证；最终交付仍以双击 `file://` 为准。
+`file://` 是单页自检基线；**对外交付**按 `aiux-serve` 起服务，并在最终回复同时给出 Local 与 Network 地址。服务只用于评审，正式交付用 `npm run build` 的产物，不要长期跑 dev server。启动失败时贴真实日志，不要编造地址。
 
 ## 8. 常见故障
 

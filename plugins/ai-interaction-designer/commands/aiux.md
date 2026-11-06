@@ -8,7 +8,7 @@ $ARGUMENTS
 
 你是资深前端工程师与交互设计师。按下面固定链路执行，不要跳步。
 
-先加载 `aiux-flow` 技能，再读取插件根目录下的 `skills/aiux-tdesign/SKILL.md` 与 `skills/aiux-preview/SKILL.md`。三份都是本流程的口径来源，缺一不可。
+先加载 `aiux-flow` 技能，再读取插件根目录下的 `skills/aiux-tdesign/SKILL.md`、`skills/aiux-preview/SKILL.md` 与 `skills/aiux-serve/SKILL.md`。四份都是本流程的口径来源，缺一不可。
 
 ## 0. 前置检查（不过就停）
 
@@ -113,6 +113,33 @@ node "$PLUGIN_ROOT/scripts/aiux-export.mjs" .aiux
 
 md 与自检清单都是生成物，不要手改；要改内容就改页面里的 JSON，然后重跑。
 
+## 5. 起预览服务并交付（必做）
+
+页面和文档都完成后，必须启动可访问的预览服务，并在最终回复同时给出 Local 与 Network 地址。优先用一键脚本：
+
+```bash
+# AIUX 任务：.aiux 没有 package.json，走静态服务
+node "$PLUGIN_ROOT/scripts/aiux-serve.mjs" .aiux
+
+# 如果交付的是真实前端项目：读 package.json，沿用项目已有 dev 脚本
+node "$PLUGIN_ROOT/scripts/aiux-serve.mjs" .
+```
+
+脚本会监听 `0.0.0.0`，从 `5173` 开始选端口（被占用自动顺延），后台启动、写日志、做 HTTP 验证，并在 `preview.json` 里给出解析后的地址。要求：
+
+- 只有 HTTP `200` / `304` 才算启动成功；失败时贴真实日志，不要编造地址。
+- 最终回复必须包含这两行，并给可点击链接：
+
+```text
+本地预览：http://localhost:5173/
+局域网预览：http://192.168.1.23:5173/
+```
+
+- 端口不是 `5173` 时写实际端口；`.aiux` 多页面时逐页给链接。
+- 说明 Local 只在本机有效，Network 需要同一局域网/Wi-Fi 且可能受防火墙影响。
+- 服务已停止时写明重启命令：`node "$PLUGIN_ROOT/scripts/aiux-serve.mjs" .aiux`。
+- 评审结束用 `--stop` 停止；正式交付用 `npm run build` 的产物，不要长期跑 dev server。
+
 ## 硬约束
 
 - **profile**：一个任务只选一个端；页面 `mcp.framework` 与任务 `aiux-profile.json` 一致。桌面端 `vue-next`，移动端 `mobile-vue`，不能混。
@@ -126,6 +153,7 @@ md 与自检清单都是生成物，不要手改；要改内容就改页面里�
 - **内容**：只写对话里出现的内容；不推断、不补全、不「合理设计」；业务规则和接口进 `openQuestions`。
 - **一致性**：唯一事实源是页面内 `aiux-spec`；面板、md、自检清单都从它派生。
 - **缺口**：TDesign 没有的能力先组合；组合不了登记 `gaps`（缺口 / 为什么 / 批准人）。已知结果页用 `Empty + Typography + Button`。
+- **交付预览**：每完成一个页面或项目，必须起服务并验证。监听 `0.0.0.0`，端口 `5173` 或顺延后的实际端口；只有 HTTP `200` / `304` 才算成功。最终回复必须同时给 Local 与 Network 可点击链接，失败就贴真实日志，禁止编造地址。
 
 ## 不做
 
@@ -145,8 +173,13 @@ md 与自检清单都是生成物，不要手改；要改内容就改页面里�
 - 校验：0 违规 / N 警告
 - 逐页 md：.aiux/docs/
 - 自检清单：.aiux/自检清单.md
+- 本地预览：http://localhost:5173/
+- 局域网预览：http://192.168.1.23:5173/
+- 预览日志：.aiux/preview.log（失败时）
 待确认：
 - <item>（<owner>）
 ```
+
+预览地址必须来自本次实际启动并通过 HTTP 验证的服务；端口顺延就写实际端口。没有启动成功就不写地址，改为贴失败原因和真实日志。
 
 如果还有页面没做完，明确列出未完成的页面和卡点，不要用「已完成」概括。
