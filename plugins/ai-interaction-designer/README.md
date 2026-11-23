@@ -1,6 +1,6 @@
 # AI 交互设计师 · ZCode 插件
 
-`/aiux`：一边聊，一边把交互按七章大纲写进**每一页自己的**交互说明；页面用 TDesign 组件和 token 生成，双击就能在浏览器打开；交互条目可点击定位并高亮页面元素；全部页面完成后再由脚本产出前端自检清单，并一键起本地/局域网预览，最终回复同时给出 Local 与 Network 地址。
+`/aiux`（中文别名 `/交互设计`、`/交互说明`，三者完全等价）：一边聊，一边把交互按七章大纲写进**每一页自己的**交互说明；页面用 TDesign 组件和 token 生成，双击就能在浏览器打开；交互条目可点击定位并高亮页面元素；全部页面完成后再由脚本产出前端自检清单，并一键起本地/局域网预览，最终回复同时给出 Local 与 Network 地址。
 
 支持两个端：桌面端 `tdesign-vue-next`，移动端 `tdesign-mobile-vue`。一个任务只选一个端。
 
@@ -60,6 +60,7 @@ MCP 启动器会优先使用系统 CA（`NODE_EXTRA_CA_CERTS` 指向 `/etc/ssl/c
 | 组成 | 文件 | 作用 |
 |---|---|---|
 | 命令 | `commands/aiux.md` | `/aiux` 入口，固定链路与硬约束 |
+| 命令 | `commands/交互设计.md`、`commands/交互说明.md` | `/交互设计`、`/交互说明`，与 `/aiux` 完全等价的中文别名 |
 | 命令 | `commands/aiux-serve.md` | `/aiux-serve` 单独启动/重启预览服务 |
 | 技能 | `skills/aiux-flow/SKILL.md` | 七章大纲、记录口径、锚点约定 |
 | 技能 | `skills/aiux-tdesign/SKILL.md` | 组件白名单、token、MCP 强制查询 |
