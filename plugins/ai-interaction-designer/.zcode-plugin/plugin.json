@@ -9,6 +9,7 @@
   "author": {
     "name": "tim"
   },
+  "icon": "./assets/icon.svg",
   "commands": "./commands",
   "skills": "./skills",
   "mcpServers": "./.mcp.json"
