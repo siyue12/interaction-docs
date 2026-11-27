@@ -500,6 +500,10 @@ function checkTagsAndCss(html, spec, refs, anchors, rep, profile) {
   if (usedTags.size && !html.includes(runtime.script)) rep.error(12, 1, `用了 TDesign 组件但没有引入 ${runtime.script}`);
   if (usedTags.size && !html.includes(runtime.css)) rep.error(12, 1, `用了 TDesign 组件但没有引入 ${runtime.css}`);
   if (!html.includes('vue.global.prod.js')) rep.warn(12, 1, '没有引入 vue.global.prod.js；确认这是有意的静态页');
+  // 遮罩 hidden 兜底：老版 aiux-panel.js 初始化漏设，全屏透明遮罩会拦截点击
+  if (html.includes('aiux-panel.js') && !/\.aiux-overlay[\s\S]{0,200}?\.hidden/.test(html) && !/querySelector\(['"]\.aiux-overlay['"]\)/.test(html)) {
+    rep.warn(12, 1, '引导脚本没有 .aiux-overlay hidden 兜底；若 vendor 是旧版，遮罩会盖住页面拦截点击');
+  }
   if (usedIcons.length && !html.includes(runtime.sprite)) {
     rep.error(8, 1, `用了 t-icon 但没有引入 ${runtime.sprite}，图标不会显示`);
   }

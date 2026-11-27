@@ -86,6 +86,7 @@
   fab.setAttribute('aria-controls', 'aiux-drawer');
 
   var overlay = el('div', 'aiux-overlay');
+  overlay.hidden = true;
   overlay.setAttribute('aria-hidden', 'true');
 
   var drawer = el('aside', 'aiux-drawer');

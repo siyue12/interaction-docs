@@ -4,7 +4,7 @@
     {
       "name": "ai-interaction-designer",
       "source": "./plugins/ai-interaction-designer",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "icon": "https://fastly.jsdelivr.net/gh/siyue12/plugin-assets@main/icon.svg",
       "description": "AI 交互设计师工作流（桌面端/移动端）：逐页生成 TDesign 高保真原型与七章交互说明，内置组件白名单、token 校验、锚点定位、前端自检清单，以及 Local/Network 交付预览。",
       "displayName": "AI Interaction Designer",

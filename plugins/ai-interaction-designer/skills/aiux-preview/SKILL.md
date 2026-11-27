@@ -100,6 +100,9 @@ node "${CLAUDE_PLUGIN_ROOT}/scripts/aiux-init.mjs" .aiux \
       if (TDesign.Icon && TDesign.Icon.props && TDesign.Icon.props.loadDefaultIcons) {
         TDesign.Icon.props.loadDefaultIcons.default = false;
       }
+      // 兜底：老版 vendor/aiux-panel.js 初始化漏设遮罩 hidden，全屏透明遮罩拦截点击
+      var ov = document.querySelector('.aiux-overlay');
+      if (ov && !ov.hidden) ov.hidden = true;
       var app = Vue.createApp({});
       app.use(TDesign);
       app.mount('#app');
