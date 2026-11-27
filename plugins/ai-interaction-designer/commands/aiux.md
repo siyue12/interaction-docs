@@ -108,6 +108,7 @@ node "$PLUGIN_ROOT/scripts/aiux-export.mjs" .aiux
 
 - 全量校验 0 违规
 - 生成 `.aiux/docs/<page>.md`
+- 生成 `.aiux/docs/前端开发自检清单.md`（从七章 spec 提取，前端开发完对照自查交互与样式）
 - 生成 `.aiux/自检清单.md`
 - 报告文件路径、警告、待确认项
 
@@ -171,7 +172,7 @@ node "$PLUGIN_ROOT/scripts/aiux-serve.mjs" .
 - 页面：<page>（<file>）
 - 交互条目：N 条，锚点全部可达
 - 校验：0 违规 / N 警告
-- 逐页 md：.aiux/docs/
+- 逐页 md 与前端开发自检清单：.aiux/docs/
 - 自检清单：.aiux/自检清单.md
 - 本地预览：http://localhost:5173/
 - 局域网预览：http://192.168.1.23:5173/

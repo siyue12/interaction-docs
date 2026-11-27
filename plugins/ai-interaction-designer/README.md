@@ -37,7 +37,7 @@
 ├── pages/
 │   ├── order-list.html       # 页面 + 内嵌 aiux-spec
 │   └── order-detail.html
-├── docs/                     # 由 aiux-export.mjs 生成
+├── docs/                     # 由 aiux-export.mjs 生成：逐页 md + 前端开发自检清单.md
 ├── vendor/                   # 桌面端 ~2.9MB / 移动端 ~2.2MB，离线可用
 ├── aiux-profile.json         # 本任务选的端
 ├── 自检清单.md                # 由 aiux-check.mjs 生成
@@ -71,7 +71,7 @@ MCP 启动器会优先使用系统 CA（`NODE_EXTRA_CA_CERTS` 指向 `/etc/ssl/c
 | 运行时 | `assets/vendor/`、`assets/vendor-mobile-vue/` + `assets/runtime/` | 桌面/移动 TDesign / 共享 Vue/sprite / 面板 |
 | 脚本 | `scripts/aiux-init.mjs` | 按 profile 铺预览环境、生成页面骨架 |
 | 脚本 | `scripts/aiux-check.mjs` | 校验 + 生成自检清单 |
-| 脚本 | `scripts/aiux-export.mjs` | 由页面 JSON 生成逐页 md |
+| 脚本 | `scripts/aiux-export.mjs` | 由页面 JSON 生成逐页 md 与前端开发自检清单 |
 | 脚本 | `scripts/aiux-serve.mjs` | 起 dev/静态服务、解析 Local/Network、HTTP 验证、停止 |
 
 ## 脚本用法
@@ -96,7 +96,7 @@ node "$PLUGIN_ROOT/scripts/aiux-check.mjs" .aiux/pages/order-list.html
 # 全量校验（0 违规时生成 自检清单.md）
 node "$PLUGIN_ROOT/scripts/aiux-check.mjs" .aiux
 
-# 生成逐页 md
+# 生成逐页 md + docs/前端开发自检清单.md（给前端对照自查用）
 node "$PLUGIN_ROOT/scripts/aiux-export.mjs" .aiux
 
 # 机器可读报告
